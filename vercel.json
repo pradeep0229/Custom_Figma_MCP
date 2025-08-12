@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "web-server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "build/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/web-server.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/web-server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/web-server.js"
+    }
+  ],
+  "env": {
+    "FIGMA_ACCESS_TOKEN": "@figma-access-token"
+  }
+} 
